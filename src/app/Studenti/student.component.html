@@ -1,0 +1,85 @@
+<p>{{stringa}}</p>
+
+<div class="container">
+    <table class="text-center table" *ngIf='students && students.length'>
+      <thead>
+      <tr>STUDENTI</tr>
+      <tr>
+        <th>id</th>
+        <th>fullName</th>
+        <th>data Di Nascita</th>
+        <th>Codice Fiscale</th>
+        <th>email</th>
+        <th>telefono</th>
+        <th>id regione</th>
+        <th>nome regione</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor='let s of students'>
+        <td>{{s.id}}</td>
+        <td>{{s.fullName}}</td>
+        <td>{{s.dataDiNascita}}</td>
+        <td>{{s.cf}}</td>
+        <td>{{s.email}}</td>
+        <td>{{s.telefono}}</td>
+        <td>{{s.idRegione}}</td>
+        <td>{{s.nomeRegione}}</td>
+      </tr>
+    </tbody>
+    </table>
+    
+    <table mat-table[dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> id </th>
+        <td mat-cell *matCellDef="let element"> {{s.id}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="fullName">
+        <th mat-header-cell *matHeaderCellDef> full Name </th>
+        <td mat-cell *matCellDef="let element"> {{s.fullName}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="dataDiNascita">
+        <th mat-header-cell *matHeaderCellDef> data di nascita </th>
+        <td mat-cell *matCellDef="let element"> {{s.dataDiNascita}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="cf">
+        <th mat-header-cell *matHeaderCellDef> CF </th>
+        <td mat-cell *matCellDef="let element"> {{s.cf}} </td>
+      </ng-container>
+
+       <!-- Symbol Column -->
+       <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> email </th>
+        <td mat-cell *matCellDef="let element"> {{s.email}} </td>
+      </ng-container>
+
+       <!-- Symbol Column -->
+       <ng-container matColumnDef="telefono">
+        <th mat-header-cell *matHeaderCellDef> telefono </th>
+        <td mat-cell *matCellDef="let element"> {{s.telefono}} </td>
+      </ng-container>
+
+       <!-- Symbol Column -->
+       <ng-container matColumnDef="idRegione">
+        <th mat-header-cell *matHeaderCellDef> id regione </th>
+        <td mat-cell *matCellDef="let element"> {{s.idRegione}} </td>
+      </ng-container>
+
+       <!-- Symbol Column -->
+       <ng-container matColumnDef="nomeRegione">
+        <th mat-header-cell *matHeaderCellDef> nome regione </th>
+        <td mat-cell *matCellDef="let element"> {{s.nomeRegione}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+    </table>
+    </div>
