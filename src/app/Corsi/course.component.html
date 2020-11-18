@@ -1,1 +1,79 @@
 <p>{{stringa}}</p>
+
+<table mat-table [dataSource]="courses" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let s"> {{s.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="nomeCorso">
+      <th mat-header-cell *matHeaderCellDef> nomeCorso </th>
+      <td mat-cell *matCellDef="let s"> {{s.nomeCorso}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="capienza">
+      <th mat-header-cell *matHeaderCellDef> capienza </th>
+      <td mat-cell *matCellDef="let s"> {{s.capienza}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="iscrizioniMin">
+      <th mat-header-cell *matHeaderCellDef> iscrizioniMin </th>
+      <td mat-cell *matCellDef="let s"> {{s.iscrizioniMin}} </td>
+    </ng-container>
+
+     <!-- Symbol Column -->
+     <ng-container matColumnDef="finanziato">
+      <th mat-header-cell *matHeaderCellDef> finanziato </th>
+      <td mat-cell *matCellDef="let s"> {{s.finanziato}} </td>
+    </ng-container>
+
+     <!-- Symbol Column -->
+     <ng-container matColumnDef="azienda">
+      <th mat-header-cell *matHeaderCellDef> azienda </th>
+      <td mat-cell *matCellDef="let s"> {{s.azienda}} </td>
+    </ng-container>
+
+     <!-- Symbol Column -->
+     <ng-container matColumnDef="iscrizioni">
+      <th mat-header-cell *matHeaderCellDef> iscrizioni </th>
+      <td mat-cell *matCellDef="let s"> {{s.iscrizioni}} </td>
+    </ng-container>
+
+     <!-- Symbol Column -->
+     <ng-container matColumnDef="numeroLezioni">
+      <th mat-header-cell *matHeaderCellDef> numeroLezioni </th>
+      <td mat-cell *matCellDef="let s"> {{s.numeroLezioni}} </td>
+    </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="orarioPreferito">
+        <th mat-header-cell *matHeaderCellDef> orarioPreferito </th>
+        <td mat-cell *matCellDef="let s"> {{s.orarioPreferito}} </td>
+      </ng-container>
+
+        <!-- Symbol Column -->
+     <ng-container matColumnDef="dataDiInizio">
+        <th mat-header-cell *matHeaderCellDef> dataDiInizio </th>
+        <td mat-cell *matCellDef="let s"> {{s.dataDiInizio}} </td>
+      </ng-container>
+
+        <!-- Symbol Column -->
+     <ng-container matColumnDef="idAulaPreferita">
+        <th mat-header-cell *matHeaderCellDef> idAulaPreferita </th>
+        <td mat-cell *matCellDef="let s"> {{s.idAulaPreferita}} </td>
+      </ng-container>
+
+        <!-- Symbol Column -->
+     <ng-container matColumnDef="dataInizio">
+        <th mat-header-cell *matHeaderCellDef> dataInizio </th>
+        <td mat-cell *matCellDef="let s"> {{s.dataInizio}} </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let s; columns: displayedColumns;"></tr>
+  
+  </table>

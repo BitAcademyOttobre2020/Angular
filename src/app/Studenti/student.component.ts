@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { IStudent } from './IStudent';
 import { StudentService } from './student.service';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
-    templateUrl: './student.component.html',
-    styleUrls: ['./student.component.css']
-  })
+  templateUrl: './student.component.html',
+  styleUrls: ['./student.component.css']
+})
 
-  
-  export class Student implements OnInit{
 
-    stringa = "hello world student";
-    dataSource: MatTableDataSource<IStudent> | undefined;
+export class Student implements OnInit {
 
-    students:IStudent[] = [];
+  stringa = "hello world student";
+  displayedColumns: string[] = ['id', 'fullName', 'dataDiNascita', 'cf', 'email', 'telefono', 'idRegione', 'nomeRegione'];
+  students: IStudent[] = [];
   errorMessage = '';
 
 
@@ -26,7 +25,7 @@ import {MatTableDataSource} from '@angular/material/table';
     this.studentService.getStudents().subscribe({
       next: students => {
         this.students = students;
-        this.dataSource = new MatTableDataSource(this.students);
+
 
         // console.log(students);
       },
@@ -34,7 +33,6 @@ import {MatTableDataSource} from '@angular/material/table';
     });
   }
 
-  displayedColumns: string[] = ['id','fullName','dataDiNascita','cf','email','telefono','idRegione','nomeRegione'];
 
 
   // ngOnInit():void{
@@ -63,4 +61,4 @@ import {MatTableDataSource} from '@angular/material/table';
 
   //  }
 
-  }
+}

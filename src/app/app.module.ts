@@ -10,13 +10,15 @@ import { Student } from './Studenti/student.component';
 import { Course } from './Corsi/course.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
+import { IscrizioniComponent } from './Iscrizioni/iscrizioni/iscrizioni.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     Student,
-    Course
+    Course,
+    IscrizioniComponent
   ],
   imports: [
     BrowserModule,
