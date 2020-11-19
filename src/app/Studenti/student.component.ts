@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { IStudent } from './IStudent';
 import { StudentService } from './student.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge, of } from 'rxjs';
+import { startWith, switchMap, map, catchError } from 'rxjs/operators';
 
 
 @Component({
@@ -10,15 +14,52 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 
 
-export class Student implements OnInit {
+export class Student implements OnInit, AfterViewInit{
 
   stringa = "hello world student";
   displayedColumns: string[] = ['id', 'fullName', 'dataDiNascita', 'cf', 'email', 'telefono', 'idRegione', 'nomeRegione'];
   students: IStudent[] = [];
   errorMessage = '';
 
+  resultsLength = 0;
+  isLoadingResults = true;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private studentService: StudentService) { }
+
+
+  ngAfterViewInit() {
+    // this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
+    merge( this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap(() => {
+          console.log("********");
+          // console.log("********"+this.sort.active);
+          // console.log("********"+this.sort.direction);
+          // console.log("********"+this.paginator.pageIndex);
+          this.isLoadingResults = true;
+          
+          return this.studentService.getStudents();
+        }),
+        map(data => {
+          // Flip flag to show that loading has finished.
+          this.isLoadingResults = false;
+          this.resultsLength = data.length;
+          return data;
+        }),
+
+        catchError(() => {
+          this.isLoadingResults = false;
+          return of([]);
+        })
+      ).subscribe(data => this.students = data);
+  }
+
+
 
 
   ngOnInit(): void {
