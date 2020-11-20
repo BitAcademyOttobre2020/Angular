@@ -4,19 +4,19 @@ import { debounceTime } from 'rxjs/operators';
 import { IStudent } from '../IStudent';
 import { StudentService } from '../student-table.service';
 
-// function emailMatcher(c: AbstractControl): { [key: string]: boolean } | null {
-//   const emailControl = c.get('email');
-//   const confirmControl = c.get('confirmEmail');
+function emailMatcher(c: AbstractControl): { [key: string]: boolean } | null {
+  const emailControl = c.get('email');
+  const confirmControl = c.get('confirmEmail');
 
-//   if (emailControl.pristine || confirmControl.pristine) {
-//     return null;
-//   }
+  if (emailControl?.pristine || confirmControl?.pristine) {
+    return null;
+  }
 
-//   if (emailControl.value === confirmControl.value) {
-//     return null;
-//   }
-//   return { match: true };
-// }
+  if (emailControl?.value === confirmControl?.value) {
+    return null;
+  }
+  return { match: true };
+}
 
 @Component({
   selector: 'app-reactive-form',
@@ -44,8 +44,7 @@ export class ReactiveFormComponent implements OnInit {
       emailGroup: this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         confirmEmail: ['', Validators.required],
-      }, 
-      // { validator: emailMatcher }
+      }, { validator: emailMatcher }
       ),
       telefono: '',
       idRegione: ''
@@ -70,7 +69,10 @@ export class ReactiveFormComponent implements OnInit {
     console.log('Saved: ' + JSON.stringify(this.studentForm.value));
 
     this.studentService.postStudent(s).subscribe({
-      next: (s)=>console.log(s),
+      next: (s)=>{
+        console.log(s);
+        this.studentForm.reset();
+      },
       error: (e)=>console.log(e)
     });
 

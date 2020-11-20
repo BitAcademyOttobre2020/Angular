@@ -4,7 +4,7 @@ import { StudentService } from './student-table.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { merge, of } from 'rxjs';
+import { BehaviorSubject, merge, of } from 'rxjs';
 import { startWith, switchMap, map, catchError } from 'rxjs/operators';
 
 
@@ -17,7 +17,9 @@ import { startWith, switchMap, map, catchError } from 'rxjs/operators';
 export class StudentTableComponent implements OnInit, AfterViewInit{
 
   stringa = "hello world student";
-  displayedColumns: string[] = ['id', 'fullName', 'dataDiNascita', 'cf', 'email', 'telefono', 'idRegione', 'nomeRegione'];
+  displayedColumns: string[] = ['id', 'fullName', 'dataDiNascita', 'cf', 'email', 'telefono', 'idRegione', 'nomeRegione', 'deleteStudent'];
+  studentSubject = new BehaviorSubject<IStudent[]>([]);
+  studentSubject$=this.studentSubject.asObservable();
   students: IStudent[] = [];
   errorMessage = '';
 
@@ -63,18 +65,22 @@ export class StudentTableComponent implements OnInit, AfterViewInit{
 
 
   ngOnInit(): void {
+    this.getStudentsList();
+  }
+
+  getStudentsList():void{
     this.studentService.getStudents().subscribe({
       next: students => {
         this.students = students;
-
-
-        // console.log(students);
+        this.studentSubject.next(students);
       },
       error: err => this.errorMessage = err
     });
   }
 
-
+  onClickDeleteStudent(id:number):void{
+    this.studentService.deleteStudent(id).subscribe(()=> this.getStudentsList());
+  }
 
   // ngOnInit():void{
 

@@ -1,7 +1,7 @@
-<p>{{stringa}}</p>
+<!-- <p>{{stringa}}</p> -->
 
 <div class="container">
-  <table class="text-center table" *ngIf='students && students.length'>
+  <!-- <table class="text-center table" *ngIf='students && students.length'>
     <thead>
       <tr>STUDENTI</tr>
       <tr>
@@ -27,14 +27,14 @@
         <td>{{s.nomeRegione}}</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
 
 
   <div class="example-loading-shade" *ngIf="isLoadingResults">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
   <div>
-    <table mat-table [dataSource]="students" class="mat-elevation-z8"
+    <table mat-table [dataSource]="studentSubject$" class="mat-elevation-z8"
     matSort matSortActive="id" matSortDisableClear matSortDirection="desc">
       <!-- Position Column -->
       <ng-container matColumnDef="id">
@@ -83,6 +83,12 @@
         <th mat-header-cell *matHeaderCellDef> nome regione </th>
         <td mat-cell *matCellDef="let s"> {{s.nomeRegione}} </td>
       </ng-container>
+
+        <!-- Delete Column -->
+        <ng-container matColumnDef="deleteStudent">
+          <th mat-header-cell *matHeaderCellDef> Cancella </th>
+          <td mat-cell *matCellDef="let s"> <button (click)="onClickDeleteStudent(s.id)"> X </button> </td>
+        </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let s; columns: displayedColumns;"></tr>

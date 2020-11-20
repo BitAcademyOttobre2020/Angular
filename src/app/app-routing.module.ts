@@ -8,10 +8,14 @@ import { StudentTableComponent } from './Studenti/student-table.component';
 
 const routes: Routes = [      
   { path: 'student', component: StudentTableComponent },
+  { path: 'student/:id', component: StudentTableComponent},
   { path: 'course', component: Course },
   { path: 'sign-up-form', component: SignUpFormComponent },
   { path: 'reactive-form', component: ReactiveFormComponent },
   { path: 'form-test', component: FormTestComponent }
+ 
+
+
 
 ];
 
