@@ -73,13 +73,13 @@
                      maxlength="20"
                      [(ngModel)]="student.cf"
                      name="cf"
-                     #dataDiNascitaVar="ngModel"
-                     [ngClass]="{'is-invalid': (cf.touched || cf.dirty) && !cf.valid }" />
+                     #cfVar="ngModel"
+                     [ngClass]="{'is-invalid': (cfVar.touched || cfVar.dirty) && !cfVar.valid }" />
               <span class="invalid-feedback">
-                <span *ngIf="cf.errors?.required">
+                <span *ngIf="cfVar.errors?.required">
                   Please enter your cf.
                 </span>
-                <span *ngIf="cf.errors?.maxlength">
+                <span *ngIf="cfVar.errors?.maxlength">
                   The cf must be less than 50 characters.
                 </span>
               </span>
@@ -125,9 +125,11 @@
                      name="telefono">
             </div>
           </div>
-  
-        
-            <div class="col-md-3">
+          
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label"
+                   for="idRegione">idRegione</label>
+            <div class="col-md-8">
               <select class="form-control"
                       id="idRegione"
                       [(ngModel)]="student.idRegione"
@@ -146,6 +148,7 @@
                 <option value="8">Campania</option>
               </select>
             </div>
+          </div>
   
         <div class="form-group row mb-2">
           <div class="offset-md-2 col-md-4">

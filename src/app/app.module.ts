@@ -1,12 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Student } from './Studenti/student.component';
+import { StudentTableComponent } from './Studenti/student-table.component';
 import { Course } from './Corsi/course.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
@@ -14,16 +11,24 @@ import { IscrizioniComponent } from './Iscrizioni/iscrizioni.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SignUpFormComponent } from './Studenti/sign-up-form/sign-up-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormComponent } from './Studenti/reactive-form/reactive-form.component';
+import { FormTestComponent } from './form-test/form-test.component';
+import { CounterComponent } from './counter/counter.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    Student,
+    StudentTableComponent,
     Course,
     IscrizioniComponent,
-    SignUpFormComponent
-  ],
+    SignUpFormComponent,
+    ReactiveFormComponent,
+    FormTestComponent,
+    CounterComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,7 +36,9 @@ import { SignUpFormComponent } from './Studenti/sign-up-form/sign-up-form.compon
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { IStudent } from './IStudent';
@@ -19,6 +19,15 @@ export class StudentService{
         tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
+  }
+
+  postStudent(student:IStudent): Observable<IStudent>{
+    const head = new HttpHeaders({
+      'Content-Type':'application/json'
+    });
+    return this.http.post<IStudent>(this.studentUrl, student, { headers: head });
+    
+    
   }
 
 

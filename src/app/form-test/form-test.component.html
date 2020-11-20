@@ -1,0 +1,16 @@
+<p>form-test works!</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <button class="md-button" (click)="subtract()">-</button>
+    </div>
+    <div class="col-md-6">
+        <button class="md-button" (click)="add()">+</button>
+    </div>
+</div>
+
+<div class="row">
+<app-counter [count]="value" (change)="countChanges($event)"></app-counter>
+</div>
+
+ciao {{newvalue}}

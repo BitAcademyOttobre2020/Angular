@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { IStudent } from './IStudent';
-import { StudentService } from './student.service';
+import { StudentService } from './student-table.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -9,12 +9,12 @@ import { startWith, switchMap, map, catchError } from 'rxjs/operators';
 
 
 @Component({
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  templateUrl: './student-table.component.html',
+  styleUrls: ['./student-table.component.css']
 })
 
 
-export class Student implements OnInit, AfterViewInit{
+export class StudentTableComponent implements OnInit, AfterViewInit{
 
   stringa = "hello world student";
   displayedColumns: string[] = ['id', 'fullName', 'dataDiNascita', 'cf', 'email', 'telefono', 'idRegione', 'nomeRegione'];

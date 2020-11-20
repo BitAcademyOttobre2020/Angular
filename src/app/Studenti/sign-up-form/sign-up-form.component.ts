@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Student } from '../student.component';
+import { IStudent } from '../IStudent';
+import { StudentService } from '../student-table.service';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -9,8 +10,17 @@ import { Student } from '../student.component';
 })
 export class SignUpFormComponent implements OnInit {
   
-
-  constructor() { }
+  student:IStudent = {
+    fullName:"",
+    id:0,
+    cf:"",
+    dataDiNascita:"",
+    email:"",
+    idRegione:0,
+    nomeRegione:"",
+    telefono:"",
+  };
+  constructor(private studentService:StudentService) { }
 
   ngOnInit(): void {
   }
@@ -18,6 +28,12 @@ export class SignUpFormComponent implements OnInit {
   save(studentForm: NgForm): void {
     console.log(studentForm.form);
     console.log('Saved: ' + JSON.stringify(studentForm.value));
+
+    this.studentService.postStudent(this.student).subscribe({
+      next: (s)=>console.log(s),
+      error: (e)=>console.log(e)
+    });
+
   }
 }
 
