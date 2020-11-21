@@ -15,6 +15,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReactiveFormComponent } from './Studenti/reactive-form/reactive-form.component';
 import { FormTestComponent } from './form-test/form-test.component';
 import { CounterComponent } from './counter/counter.component';
+import { CalendarioComponent } from './Corsi/calendario/calendario.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon'
+
+
+
 
 
 
@@ -27,7 +34,9 @@ import { CounterComponent } from './counter/counter.component';
     SignUpFormComponent,
     ReactiveFormComponent,
     FormTestComponent,
-    CounterComponent
+    CounterComponent,
+    CalendarioComponent
+   
     ],
   imports: [
     BrowserModule,
@@ -38,7 +47,10 @@ import { CounterComponent } from './counter/counter.component';
     MatPaginatorModule,
     MatProgressSpinnerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,7 +11,7 @@ import { ICourse } from './ICourse';
   export class Course{
 
     stringa = "hello world course";
-    displayedColumns: string[] = ['id', 'nomeCorso', 'capienza', 'iscrizioniMin', 'finanziato', 'azienda', 'iscrizioni', 'numeroLezioni', 'orarioPreferito', 'dataDiInizio', 'idAulaPreferita', 'dataInizio'];
+    displayedColumns: string[] = ['calendario','id', 'nomeCorso', 'capienza', 'iscrizioniMin', 'finanziato', 'azienda', 'dataDiInizio', 'idAulaPreferita'];
     courses: ICourse[] = [];
     errorMessage = '';
 
@@ -23,12 +23,10 @@ import { ICourse } from './ICourse';
     this.courseService.getCourse().subscribe({
       next: courses => {
         this.courses = courses;
-
-
-        // console.log(students);
       },
       error: err => this.errorMessage = err
     });
   }
+  
 
   }

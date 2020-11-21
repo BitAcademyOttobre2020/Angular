@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { ICourse } from './ICourse';
+import { ILesson } from './ILesson';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,14 @@ export class CourseService {
 
   getCourse(): Observable<ICourse[]> {
     return this.http.get<ICourse[]>(this.courseUrl)
+      .pipe(
+        tap(data => console.log('All: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
+  getLessons(id:number): Observable<ILesson[]> {
+    return this.http.get<ILesson[]>(this.courseUrl+"/lezioni/"+id)
       .pipe(
         tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)
