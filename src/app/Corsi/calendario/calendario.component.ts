@@ -33,9 +33,6 @@ export class CalendarioComponent {
 
   Today = [{ data: this.dateToString(new Date()), orarioAula: "Today" }]
 
-  dates = [
-    { data: "2020-09-01", orarioAula: "Special Day 1" }
-  ];
   dateClass = (d: Date) => {
     if (d.getDate() == 1)
       this.displayMonth()
