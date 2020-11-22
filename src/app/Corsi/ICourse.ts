@@ -5,11 +5,12 @@ export interface ICourse{
     capienza:number;
     iscrizioniMin: number;
     finanziato: boolean;
-    azienda: string;
+    azienda: number;
     iscrizioni: number;
     numeroLezioni: number;
     orarioPreferito: string;
     dataDiInizio: string;
     idAulaPreferita: number;
-    dataInizio: string;
+    dowList:string;
+
 }

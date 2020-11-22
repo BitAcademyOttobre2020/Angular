@@ -12,8 +12,7 @@ import { ICourse } from './ICourse';
   
   export class Course implements OnInit{
 
-    stringa = "hello world course";
-    displayedColumns: string[] = ['calendario','id', 'nomeCorso', 'capienza', 'iscrizioniMin', 'finanziato', 'azienda', 'dataDiInizio', 'idAulaPreferita'];
+    displayedColumns: string[] = ['calendario','id', 'nomeCorso', 'capienza', 'iscrizioniMin', 'finanziato', 'azienda', 'dataDiInizio', 'idAulaPreferita', 'deleteCourse'];
     courses: ICourse[] = [];
     errorMessage = '';
     dataSource:MatTableDataSource<ICourse>;
@@ -41,6 +40,16 @@ import { ICourse } from './ICourse';
       },
       error: err => this.errorMessage = err
     });
+  }
+
+  onClickDeleteCourse(id:number):void{
+    this.courseService.deleteCourse(id).subscribe(()=> this.getCoursesList());
+  }
+
+  confirmDelete(id:number):void{
+    if(confirm("Sicuro di voler cancellare il corso con id "+id+ "?")) {
+      this.onClickDeleteCourse(id);
+    }
   }
 
   }

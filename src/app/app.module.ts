@@ -19,6 +19,7 @@ import { CalendarioComponent } from './Corsi/calendario/calendario.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon'
+import { ReactiveFormCourseComponent } from './Corsi/reactive-form-course/reactive-form-course.component';
 
 
 
@@ -35,8 +36,8 @@ import {MatIconModule} from '@angular/material/icon'
     ReactiveFormComponent,
     FormTestComponent,
     CounterComponent,
-    CalendarioComponent
-   
+    CalendarioComponent,
+    ReactiveFormCourseComponent 
     ],
   imports: [
     BrowserModule,
@@ -51,6 +52,7 @@ import {MatIconModule} from '@angular/material/icon'
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

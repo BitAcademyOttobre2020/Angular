@@ -41,5 +41,11 @@ export class StudentTableComponent implements OnInit{
   onClickDeleteStudent(id:number):void{
     this.studentService.deleteStudent(id).subscribe(()=> this.getStudentsList());
   }
+
+  confirmDelete(id:number):void{
+    if(confirm("Sicuro di voler cancellare lo studente con id "+id+ "?")) {
+      this.onClickDeleteStudent(id);
+    }
+  }
 }
 

@@ -3,60 +3,71 @@
     <!-- Position Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> id </th>
-      <td mat-cell *matCellDef="let s"> {{s.id}} </td>
+      <td mat-cell *matCellDef="let c"> {{c.id}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="nomeCorso">
       <th mat-header-cell *matHeaderCellDef> nomeCorso </th>
-      <td mat-cell *matCellDef="let s"> {{s.nomeCorso}} </td>
+      <td mat-cell *matCellDef="let c"> {{c.nomeCorso}} </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="capienza">
       <th mat-header-cell *matHeaderCellDef> capienza </th>
-      <td mat-cell *matCellDef="let s"> {{s.capienza}} </td>
+      <td mat-cell *matCellDef="let c"> {{c.capienza}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="iscrizioniMin">
       <th mat-header-cell *matHeaderCellDef> iscrizioniMin </th>
-      <td mat-cell *matCellDef="let s"> {{s.iscrizioniMin}} </td>
+      <td mat-cell *matCellDef="let c"> {{c.iscrizioniMin}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="finanziato">
       <th mat-header-cell *matHeaderCellDef> finanziato </th>
-      <td mat-cell *matCellDef="let s"> {{s.finanziato}} </td>
+      <td mat-cell *matCellDef="let c"> {{c.finanziato}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="azienda">
       <th mat-header-cell *matHeaderCellDef> azienda </th>
-      <td mat-cell *matCellDef="let s"> {{s.azienda}} </td>
+      <td mat-cell *matCellDef="let c"> {{c.azienda}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="dataDiInizio">
       <th mat-header-cell *matHeaderCellDef> dataDiInizio </th>
-      <td mat-cell *matCellDef="let s"> {{s.dataDiInizio}} </td>
+      <td mat-cell *matCellDef="let c"> {{c.dataDiInizio}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="idAulaPreferita">
       <th mat-header-cell *matHeaderCellDef> idAulaPreferita </th>
-      <td mat-cell *matCellDef="let s"> {{s.idAulaPreferita}} </td>
+      <td mat-cell *matCellDef="let c"> {{c.idAulaPreferita}} </td>
     </ng-container>
 
     <!-- Calendar Column -->
     <ng-container matColumnDef="calendario">
       <th mat-header-cell *matHeaderCellDef> calendario </th>
-      <td mat-cell *matCellDef="let s">
-        <a [routerLink]="['/calendario', s.id]">
+      <td mat-cell *matCellDef="let c">
+        <a [routerLink]="['/calendario', c.id]">
           <mat-icon>calendar_today</mat-icon>
         </a>
       </td>
     </ng-container>
+
+    <!-- <ng-container matColumnDef="deleteCourse">
+      <th mat-header-cell *matHeaderCellDef> Cancella </th>
+      <td mat-cell *matCellDef="let s"><a [routerLink]=""><mat-icon (click)="onClickDeleteCourse(s.id)">delete</mat-icon></a></td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="deleteCourse">
+      <th mat-header-cell *matHeaderCellDef> Cancella </th>
+      <td mat-cell *matCellDef="let c"><a [routerLink]=""><mat-icon (click)="confirmDelete(c.id)">delete</mat-icon></a></td>
+    </ng-container>
+
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

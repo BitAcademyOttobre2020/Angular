@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
@@ -22,12 +22,29 @@ export class CourseService {
       );
   }
 
+  deleteCourse(id:number): Observable<never>{
+    return this.http.delete<never>(this.courseUrl+"/"+id)
+    .pipe(
+      tap(data => console.log(data)),
+      catchError(this.handleError)
+    );
+  }
+
   getLessons(id:number): Observable<ILesson[]> {
     return this.http.get<ILesson[]>(this.courseUrl+"/lezioni/"+id)
       .pipe(
         tap(data => console.log('All: ' + JSON.stringify(data))),
         catchError(this.handleError)
       );
+  }
+
+  postCourse(course:ICourse): Observable<ICourse>{
+    const head = new HttpHeaders({
+      'Content-Type':'application/json'
+    });
+    return this.http.post<ICourse>(this.courseUrl, course, { headers: head });
+    
+    
   }
 
 

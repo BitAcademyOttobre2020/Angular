@@ -20,8 +20,6 @@ export class CalendarioComponent {
 
 
   ngOnInit(): void {
-    // let s: string[] = this.router.url.split('/');
-    // this.idCourse = Number(s[s.length-1]);
     this.routeSub=this.route.params.subscribe(params=>this.idCourse=params["id"]);
     this.courseService.getLessons(this.idCourse).subscribe({
       next: lessons => {
@@ -36,16 +34,14 @@ export class CalendarioComponent {
   dateClass = (d: Date) => {
     if (d.getDate() == 1)
       this.displayMonth()
+      
     const dateSearch = this.dateToString(d);
     if (this.Today.find(f => f.data == dateSearch)) {
-      return this.Today.find(f => f.data == dateSearch)
-        ? "todays_class"
-        : "normal";
+      return this.Today.find(f => f.data == dateSearch)? "todays_class": "normal";
     } else {
-      return this.lessons.find(f => f.data == dateSearch)
-        ? "example-custom-date-class"
-        : "normal";
+      return this.lessons.find(f => f.data == dateSearch)? "example-custom-date-class": "normal";
     }
+
 
   };
 
