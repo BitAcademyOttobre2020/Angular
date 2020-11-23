@@ -4,6 +4,7 @@ import { CalendarioComponent } from './Corsi/calendario/calendario.component';
 import { Course } from './Corsi/course.component';
 import { ReactiveFormCourseComponent } from './Corsi/reactive-form-course/reactive-form-course.component';
 import { FormTestComponent } from './form-test/form-test.component';
+import { IscrizioniComponent } from './Iscrizioni/iscrizioni.component';
 import { ReactiveFormComponent } from './Studenti/reactive-form/reactive-form.component';
 import { SignUpFormComponent } from './Studenti/sign-up-form/sign-up-form.component';
 import { StudentTableComponent } from './Studenti/student-table.component';
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'form-test', component: FormTestComponent },
   { path: 'calendario', component: CalendarioComponent },
   { path: 'calendario/:id', component: CalendarioComponent },
-  { path: 'reactive-form-course', component: ReactiveFormCourseComponent }
+  { path: 'reactive-form-course', component: ReactiveFormCourseComponent },
+  { path: 'iscrizioni', component: IscrizioniComponent }
 
 
 

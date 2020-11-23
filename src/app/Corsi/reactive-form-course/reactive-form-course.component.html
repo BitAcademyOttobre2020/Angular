@@ -1,123 +1,124 @@
-<div class="card-body">
-  <form novalidate (ngSubmit)="save()" [formGroup]="courseForm">
+<div class="mat-elevation-z8">
+  <div class="card-body">
+    <form novalidate (ngSubmit)="save()" [formGroup]="courseForm">
 
-    <div class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="nomeCorsoId">Nome del Corso</label>
-      <div class="col-md-8">
-        <input class="form-control" id="nomeCorsoId" type="text" placeholder="Nome del Corso (required)"
-          formControlName="nomeCorso" [ngClass]="{'is-invalid': (courseForm.get('nomeCorso')?.touched ||
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="nomeCorsoId">Nome del Corso</label>
+        <div class="col-md-8">
+          <input class="form-control" id="nomeCorsoId" type="text" placeholder="Nome del Corso (required)"
+            formControlName="nomeCorso" [ngClass]="{'is-invalid': (courseForm.get('nomeCorso')?.touched ||
                                             courseForm.get('nomeCorso')?.dirty) &&
                                             !courseForm.get('nomeCorso')?.valid }" />
-        <span class="invalid-feedback">
-          <span *ngIf="courseForm.get('nomeCorso')?.errors?.required">
-            Inserisci il Nome del Corso.
+          <span class="invalid-feedback">
+            <span *ngIf="courseForm.get('nomeCorso')?.errors?.required">
+              Inserisci il Nome del Corso.
+            </span>
+            <span *ngIf="courseForm.get('nomeCorso')?.errors?.minlength">
+              Il Nome del Corso deve contenere più di 3 caratteri.
+            </span>
           </span>
-          <span *ngIf="courseForm.get('nomeCorso')?.errors?.minlength">
-            Il Nome del Corso deve contenere più di 3 caratteri.
-          </span>
-        </span>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="iscrizioniMinId">iscrizioniMin</label>
-      <div class="col-md-8">
-        <input class="form-control" id="iscrizioniMinId" type="number" placeholder="iscrizioniMin (required)"
-          formControlName="iscrizioniMin" [ngClass]="{'is-invalid': (courseForm.get('iscrizioniMin')?.touched ||
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="iscrizioniMinId">iscrizioniMin</label>
+        <div class="col-md-8">
+          <input class="form-control" id="iscrizioniMinId" type="number" placeholder="iscrizioniMin (required)"
+            formControlName="iscrizioniMin" [ngClass]="{'is-invalid': (courseForm.get('iscrizioniMin')?.touched ||
                                             courseForm.get('iscrizioniMin')?.dirty) &&
                                             !courseForm.get('iscrizioniMin')?.valid }" />
-        <span class="invalid-feedback">
-          <span *ngIf="courseForm.get('iscrizioniMin')?.errors?.required">
-            Please enter your iscrizioniMin.
+          <span class="invalid-feedback">
+            <span *ngIf="courseForm.get('iscrizioniMin')?.errors?.required">
+              Please enter your iscrizioniMin.
+            </span>
           </span>
-        </span>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="numeroLezioniId">numeroLezioni</label>
-      <div class="col-md-8">
-        <input class="form-control" id="numeroLezioniId" type="number" placeholder="numeroLezioni (required)"
-          formControlName="numeroLezioni" [ngClass]="{'is-invalid': (courseForm.get('numeroLezioni')?.touched ||
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="numeroLezioniId">numeroLezioni</label>
+        <div class="col-md-8">
+          <input class="form-control" id="numeroLezioniId" type="number" placeholder="numeroLezioni (required)"
+            formControlName="numeroLezioni" [ngClass]="{'is-invalid': (courseForm.get('numeroLezioni')?.touched ||
                                             courseForm.get('numeroLezioni')?.dirty) &&
                                             !courseForm.get('numeroLezioni')?.valid }" />
-        <span class="invalid-feedback">
-          <span *ngIf="courseForm.get('numeroLezioni')?.errors?.required">
-            Please enter your numeroLezioni.
+          <span class="invalid-feedback">
+            <span *ngIf="courseForm.get('numeroLezioni')?.errors?.required">
+              Please enter your numeroLezioni.
+            </span>
           </span>
-        </span>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="orarioPreferito">orarioPreferito</label>
-      <div class="col-md-8">
-        <select class="form-control" id="orarioPreferito" formControlName="orarioPreferito">
-          <option value="" disabled selected hidden>In quale orarioPreferito si svolgerà il corso?</option>
-          <option value="MATTINA1">9-11</option>
-          <option value="MATTINA2">11-13</option>
-          <option value="POMERIGGIO1">14-16</option>
-          <option value="POMERIGGIO2">16-18</option>
-        </select>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="orarioPreferito">orarioPreferito</label>
+        <div class="col-md-8">
+          <select class="form-control" id="orarioPreferito" formControlName="orarioPreferito">
+            <option value="" disabled selected hidden>In quale orarioPreferito si svolgerà il corso?</option>
+            <option value="MATTINA1">9-11</option>
+            <option value="MATTINA2">11-13</option>
+            <option value="POMERIGGIO1">14-16</option>
+            <option value="POMERIGGIO2">16-18</option>
+          </select>
+        </div>
       </div>
-    </div>
 
 
-    <div class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="dataDiInizioId">dataDiInizio</label>
-      <div class="col-md-8">
-        <input class="form-control" id="dataDiInizioId" type="text" placeholder="dataDiInizio (required)"
-          formControlName="dataDiInizio" [ngClass]="{'is-invalid': (courseForm.get('dataDiInizio')?.touched ||
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="dataDiInizioId">dataDiInizio</label>
+        <div class="col-md-8">
+          <input class="form-control" id="dataDiInizioId" type="text" placeholder="dataDiInizio (required)"
+            formControlName="dataDiInizio" [ngClass]="{'is-invalid': (courseForm.get('dataDiInizio')?.touched ||
                                             courseForm.get('dataDiInizio')?.dirty) &&
                                             !courseForm.get('dataDiInizio')?.valid }" />
-        <span class="invalid-feedback">
-          <span *ngIf="courseForm.get('dataDiInizio')?.errors?.required">
-            Please enter your dataDiInizio.
+          <span class="invalid-feedback">
+            <span *ngIf="courseForm.get('dataDiInizio')?.errors?.required">
+              Please enter your dataDiInizio.
+            </span>
           </span>
-        </span>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="idAulaPreferitaId">idAulaPreferita</label>
-      <div class="col-md-8">
-        <input class="form-control" id="idAulaPreferitaId" type="number" placeholder="idAulaPreferita (required)"
-          formControlName="idAulaPreferita" [ngClass]="{'is-invalid': (courseForm.get('idAulaPreferita')?.touched ||
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="idAulaPreferitaId">idAulaPreferita</label>
+        <div class="col-md-8">
+          <input class="form-control" id="idAulaPreferitaId" type="number" placeholder="idAulaPreferita (required)"
+            formControlName="idAulaPreferita" [ngClass]="{'is-invalid': (courseForm.get('idAulaPreferita')?.touched ||
                                             courseForm.get('idAulaPreferita')?.dirty) &&
                                             !courseForm.get('idAulaPreferita')?.valid }" />
-        <span class="invalid-feedback">
-          <span *ngIf="courseForm.get('idAulaPreferita')?.errors?.required">
-            Please enter your idAulaPreferita.
+          <span class="invalid-feedback">
+            <span *ngIf="courseForm.get('idAulaPreferita')?.errors?.required">
+              Please enter your idAulaPreferita.
+            </span>
           </span>
-        </span>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="capienzaId">capienza</label>
-      <div class="col-md-8">
-        <input class="form-control" id="capienzaId" type="number" placeholder="capienza" formControlName="capienza"
-          [ngClass]="{'is-invalid': !courseForm.get('capienza')?.valid }" />
-        <span class="invalid-feedback">
-          <span *ngIf="courseForm.get('capienza')?.errors?.required">
-            Please enter your capienza number.
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="capienzaId">capienza</label>
+        <div class="col-md-8">
+          <input class="form-control" id="capienzaId" type="number" placeholder="capienza" formControlName="capienza"
+            [ngClass]="{'is-invalid': !courseForm.get('capienza')?.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="courseForm.get('capienza')?.errors?.required">
+              Please enter your capienza number.
+            </span>
           </span>
-        </span>
+        </div>
       </div>
-    </div>
 
-    <div class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="finanziato">finanziato</label>
-      <div class="col-md-8">
-        <select class="form-control" id="finanziato" formControlName="finanziato">
-          <option value="" disabled selected hidden>Il corso è stato finanziato?</option>
-          <option value="true">Si</option>
-          <option value="false">No</option>
-        </select>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="finanziato">finanziato</label>
+        <div class="col-md-8">
+          <select class="form-control" id="finanziato" formControlName="finanziato">
+            <option value="" disabled selected hidden>Il corso è stato finanziato?</option>
+            <option value="true">Si</option>
+            <option value="false">No</option>
+          </select>
+        </div>
       </div>
-    </div>
 
-    <!-- <div class="form-group row mb-2">
+      <!-- <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"
                for="aziendaId">azienda</label>
         <div class="col-md-8">
@@ -135,48 +136,49 @@
         </div>
       </div> -->
 
-    <div class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="iscrizioniId">iscrizioni</label>
-      <div class="col-md-8">
-        <input class="form-control" id="iscrizioniId" type="number" placeholder="iscrizioni"
-          formControlName="iscrizioni" [ngClass]="{'is-invalid': !courseForm.get('iscrizioni')?.valid }" />
-        <span class="invalid-feedback">
-          <span *ngIf="courseForm.get('iscrizioni')?.errors?.required">
-            Please enter your iscrizioni number.
+      <!-- <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="iscrizioniId">iscrizioni</label>
+        <div class="col-md-8">
+          <input class="form-control" id="iscrizioniId" type="number" placeholder="iscrizioni"
+            formControlName="iscrizioni" [ngClass]="{'is-invalid': !courseForm.get('iscrizioni')?.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="courseForm.get('iscrizioni')?.errors?.required">
+              Please enter your iscrizioni number.
+            </span>
           </span>
-        </span>
+        </div>
+      </div> -->
+
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="dowList">dowList</label>
+        <div class="col-md-8">
+          <select class="form-control" id="dowList" formControlName="dowList" multiple>
+            <option value="" disabled selected hidden>Seleziona in quali giorni si dovrà tenere il corso</option>
+            <option value="0">MONDAY</option>
+            <option value="1">TUESDAY</option>
+            <option value="2">WEDNESDAY</option>
+            <option value="3">THURSDAY</option>
+            <option value="4">FRIDAY</option>
+            <option value="5">SATURDAY</option>
+            <option value="6">SUNDAY</option>ƒ
+
+
+          </select>
+        </div>
       </div>
-    </div>
 
 
-    <div class="form-group row mb-2">
-      <label class="col-md-2 col-form-label" for="dowList">dowList</label>
-      <div class="col-md-8">
-        <select class="form-control" id="dowList" formControlName="dowList" multiple>
-          <option value="" disabled selected hidden>Seleziona in quali giorni si dovrà tenere il corso</option>
-          <option value="0">MONDAY</option>
-          <option value="1">TUESDAY</option>
-          <option value="2">WEDNESDAY</option>
-          <option value="3">THURSDAY</option>
-          <option value="4">FRIDAY</option>
-          <option value="5">SATURDAY</option>
-          <option value="6">SUNDAY</option>ƒ
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-primary mr-3" type="submit" style="width:80px"
+            [title]="courseForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+            [disabled]="!courseForm.valid">
+            Save
+          </button>
 
-
-        </select>
+        </div>
       </div>
-    </div>
-
-
-    <div class="form-group row mb-2">
-      <div class="offset-md-2 col-md-4">
-        <button class="btn btn-primary mr-3" type="submit" style="width:80px"
-          [title]="courseForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-          [disabled]="!courseForm.valid">
-          Save
-        </button>
-
-      </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+</div>ß

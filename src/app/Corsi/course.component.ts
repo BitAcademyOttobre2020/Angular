@@ -12,7 +12,7 @@ import { ICourse } from './ICourse';
   
   export class Course implements OnInit{
 
-    displayedColumns: string[] = ['calendario','id', 'nomeCorso', 'capienza', 'iscrizioniMin', 'finanziato', 'azienda', 'dataDiInizio', 'idAulaPreferita', 'deleteCourse'];
+    displayedColumns: string[] = ['calendario','id', 'nomeCorso', 'capienza', 'iscrizioniMin', 'finanziato', 'dataDiInizio', 'idAulaPreferita', 'deleteCourse'];
     courses: ICourse[] = [];
     errorMessage = '';
     dataSource:MatTableDataSource<ICourse>;
